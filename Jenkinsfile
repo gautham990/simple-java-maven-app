@@ -23,12 +23,11 @@ pipeline {
                     junit "target/surefire-reports/*.xml"
                 }
             }
-        }   
+        }  
+    }     
     post {
         always {
             deleteDir() //Clean the workspace post completion
             }
         }
-   
-    } 
 }
