@@ -5,7 +5,6 @@ pipeline {
     } 
     options {
         timeout(10)     //Restrict the job to 10mins
-        timestamps  //Timestamp the output
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '3', numToKeepStr: '3') //Discard old builds
     }
     stages {
