@@ -1,8 +1,13 @@
 pipeline {
     agent any 
     tools {
-        maven "maven363"
+        maven "maven363"    //Verison of Maven defined in global config
     } 
+    options {
+        timeout(10)     //Restrict the job to 10mins
+        timestamps  //Timestamp the output
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '3', numToKeepStr: '3') //Discard old builds
+    }
     stages {
         stage('Build') {
             steps {
@@ -17,6 +22,13 @@ pipeline {
                 always {
                     junit "target/surefire-reports/*.xml"
                 }
-        }   }
+            }
+        }   
+        post {
+            always {
+                deleteDir() //Clean the workspace post completion
+            }
+        }
+   
     } 
 }
