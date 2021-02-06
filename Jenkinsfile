@@ -24,9 +24,9 @@ pipeline {
                 }
             }
         }   
-        post {
-            always {
-                deleteDir() //Clean the workspace post completion
+    post {
+        always {
+            deleteDir() //Clean the workspace post completion
             }
         }
    
