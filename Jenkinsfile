@@ -1,5 +1,7 @@
 pipeline {
-    agent node1 
+    agent {
+        label 'node1'
+    }
     tools {
         maven "maven363"    //Verison of Maven defined in global config
     } 
